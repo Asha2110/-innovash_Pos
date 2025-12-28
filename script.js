@@ -1,5 +1,5 @@
 /* ================= CONFIG ================= */
-const APP_ID = "INNOVASH_KR_001";
+const app_Id = "INNOVASH_KR_0001";
 const RENEWAL_URL = "https://asha2110.github.io/Innovaash-renewal/renewal.json";
 const GRACE_DAYS = 7;
 
@@ -26,7 +26,7 @@ async function fetchExpiry(){
   try {
     const res = await fetch(RENEWAL_URL,{ cache:"no-store"});
     const data = await res.json();
-    serverExpiry = data[APP_ID] || null;
+    serverExpiry = data[app_Id] || null;
     if(serverExpiry) localStorage.setItem("lastExpiry", serverExpiry);
   } catch {
     serverExpiry = localStorage.getItem("lastExpiry");
@@ -191,4 +191,5 @@ function adminAccess() {
 /* ================= INIT ================= */
 renderButtons();
 fetchExpiry();
+
 update();
